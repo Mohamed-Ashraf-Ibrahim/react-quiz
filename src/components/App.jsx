@@ -7,7 +7,7 @@ export default function App() {
 
       <Main className="main">
         <p>1/15</p>
-        <p>Questions?</p>
+        <p>Questions??</p>
       </Main>
     </div>
   );
