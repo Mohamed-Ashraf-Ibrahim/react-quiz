@@ -112,6 +112,7 @@ progress {
 ::-webkit-progress-value {
   background-color: var(--color-theme-progress);
   border-radius: 100px;
+  transition: 0.3s;
 }
 
 .btn {

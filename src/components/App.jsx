@@ -10,6 +10,8 @@ import Question from "./Question";
 import NextButton from "./NextButton";
 import Progress from "./Progress";
 import FinishScreen from "./FinishScreen";
+import Footer from "./Footer";
+import Timer from "./Timer";
 
 const initialState = {
   questions: [],
@@ -20,7 +22,10 @@ const initialState = {
   answer: null,
   points: 0,
   highScore: 0,
+  secondsRemaining: null,
 };
+
+const SECS_PER_QUESTION = 30;
 
 function reducer(state, action) {
   switch (action.type) {
@@ -39,6 +44,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
+        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -59,21 +65,35 @@ function reducer(state, action) {
         highScore:
           state.points > state.highScore ? state.points : state.highScore,
       };
+    case "restartQuiz":
+      return {
+        ...initialState,
+        questions: state.questions,
+        status: "ready",
+      };
+    case "tick":
+      return {
+        ...state,
+        secondsRemaining: state.secondsRemaining - 1,
+        status: state.secondsRemaining === 0 ? "finish" : state.status,
+      };
     default:
       throw new Error("Action unknown");
   }
 }
 
 export default function App() {
-  const [{ questions, status, index, answer, points, highScore }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { questions, status, index, answer, points, highScore, secondsRemaining },
+    dispatch,
+  ] = useReducer(reducer, initialState);
   const numQuestions = questions.length;
   const maxPoints = questions.reduce((prev, cur) => prev + cur.points, 0);
 
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const res = await fetch("http://localhost:9000/questions");
+        const res = await fetch("/api/questions");
         if (!res.ok)
           throw new Error("Something went wrong with fetching questions!");
         const data = await res.json();
@@ -110,12 +130,15 @@ export default function App() {
               dispatch={dispatch}
               answer={answer}
             />
-            <NextButton
-              answer={answer}
-              dispatch={dispatch}
-              numQuestions={numQuestions}
-              index={index}
-            />
+            <Footer>
+              <NextButton
+                answer={answer}
+                dispatch={dispatch}
+                numQuestions={numQuestions}
+                index={index}
+              />
+              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+            </Footer>
           </>
         )}
         {status === "finish" && (
@@ -123,6 +146,7 @@ export default function App() {
             points={points}
             maxPoints={maxPoints}
             highScore={highScore}
+            dispatch={dispatch}
           />
         )}
       </Main>
