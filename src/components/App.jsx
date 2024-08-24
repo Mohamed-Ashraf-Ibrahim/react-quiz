@@ -44,7 +44,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
-        secondsRemaining: state.questions.length * SECS_PER_QUESTION,
+        secondsRemaining: SECS_PER_QUESTION,
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
@@ -74,8 +74,16 @@ function reducer(state, action) {
     case "tick":
       return {
         ...state,
-        secondsRemaining: state.secondsRemaining - 1,
-        status: state.secondsRemaining === 0 ? "finish" : state.status,
+        secondsRemaining:
+          state.secondsRemaining === 0
+            ? SECS_PER_QUESTION
+            : state.secondsRemaining - 1,
+        index: state.secondsRemaining === 0 ? state.index + 1 : state.index,
+      };
+    case "resetTimer":
+      return {
+        ...state,
+        secondsRemaining: SECS_PER_QUESTION,
       };
     default:
       throw new Error("Action unknown");
@@ -129,6 +137,7 @@ export default function App() {
               question={questions[index]}
               dispatch={dispatch}
               answer={answer}
+              secondsRemaining={secondsRemaining}
             />
             <Footer>
               <NextButton
@@ -137,7 +146,7 @@ export default function App() {
                 numQuestions={numQuestions}
                 index={index}
               />
-              <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} />
+              {/* <Timer dispatch={dispatch} secondsRemaining={secondsRemaining} /> */}
             </Footer>
           </>
         )}

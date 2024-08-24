@@ -1,18 +1,19 @@
-/* eslint-disable react/prop-types */
+// Timer.js
 import { useEffect } from "react";
-
-function Timer({ dispatch, secondsRemaining }) {
+// eslint-disable-next-line react/prop-types
+function Timer({ secondsRemaining, dispatch, question }) {
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
 
   useEffect(() => {
+    dispatch({ type: "resetTimer" });
+
     const id = setInterval(() => {
       dispatch({ type: "tick" });
     }, 1000);
-    return () => clearInterval(id);
-  }, [dispatch]);
 
-  // Cleaning Function
+    return () => clearInterval(id);
+  }, [dispatch, question]);
 
   return (
     <div className="timer">
