@@ -71,6 +71,11 @@ function reducer(state, action) {
         questions: state.questions,
         status: "ready",
       };
+    case "resetTimer":
+      return {
+        ...state,
+        secondsRemaining: SECS_PER_QUESTION,
+      };
     case "tick":
       return {
         ...state,
@@ -79,11 +84,6 @@ function reducer(state, action) {
             ? SECS_PER_QUESTION
             : state.secondsRemaining - 1,
         index: state.secondsRemaining === 0 ? state.index + 1 : state.index,
-      };
-    case "resetTimer":
-      return {
-        ...state,
-        secondsRemaining: SECS_PER_QUESTION,
       };
     default:
       throw new Error("Action unknown");
