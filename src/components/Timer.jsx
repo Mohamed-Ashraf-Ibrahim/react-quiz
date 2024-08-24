@@ -12,6 +12,7 @@ function Timer({ secondsRemaining, dispatch, question }) {
       dispatch({ type: "tick" });
     }, 1000);
 
+    // Cleaner FUnction
     return () => clearInterval(id);
   }, [dispatch, question]);
 
