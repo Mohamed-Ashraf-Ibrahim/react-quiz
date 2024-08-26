@@ -101,7 +101,7 @@ export default function App() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const res = await fetch("/api/questions");
+        const res = await fetch("/data/questions.json");
         if (!res.ok)
           throw new Error("Something went wrong with fetching questions!");
         const data = await res.json();

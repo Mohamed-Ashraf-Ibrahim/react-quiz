@@ -6,10 +6,10 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      "/api": {
-        target: "http://localhost:9000", // JSON server URL
+      '/api': {
+        target: 'http://localhost:9000',  // JSON server URL
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ""), // Remove '/api' from requests
+        rewrite: (path) => path.replace(/^\/api/, ''), // Remove '/api' from requests
       },
     },
   },
