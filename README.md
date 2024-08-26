@@ -1,8 +1,20 @@
-# React + Vite
+# React Quiz Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React-based quiz application that allows users to answer questions and view their results. The application fetches questions from a JSON file and displays them to the user. It is built using React, CSS3, and JavaScript (ES6+).
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Fetch Questions**: The application retrieves questions from a local JSON file.
+- **Interactive UI**: Users can interact with the quiz, answer questions, and see results.
+- **Custom Hooks**: Utilizes custom React hooks for managing state and side effects.
+
+## Setup
+
+To get started with this project, follow these steps:
+
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/your-username/react-quiz-project.git
+   cd react-quiz-project
+2. to fetch data**
+   npm run server
