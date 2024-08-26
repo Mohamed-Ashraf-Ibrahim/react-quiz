@@ -16,5 +16,7 @@ To get started with this project, follow these steps:
    ```bash
    git clone https://github.com/your-username/react-quiz-project.git
    cd react-quiz-project
-2. to fetch data**
-   npm run server
+   
+2. Run the Local JSON Server: To fetch the quiz data, you need to start the JSON server that serves the data from data/questions.json. Use the following command:
+  ```bash
+npm run server
