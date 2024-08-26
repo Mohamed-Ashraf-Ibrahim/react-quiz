@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 function Options({ question, dispatch, answer }) {
   const hasAnswered = answer !== null;
 

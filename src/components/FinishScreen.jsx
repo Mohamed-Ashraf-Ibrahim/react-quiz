@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 function FinishScreen({ points, maxPoints, highScore, dispatch }) {
   const percentage = (points / maxPoints) * 100;
 

@@ -1,7 +1,7 @@
-/* eslint-disable no-unused-vars */
+
 import Options from "./Options";
 import Timer from "./Timer";
-/* eslint-disable react/prop-types */
+
 function Start({ question, dispatch, answer, secondsRemaining }) {
   return (
     <div>

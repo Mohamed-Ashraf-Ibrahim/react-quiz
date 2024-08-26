@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+
 function Progress({ index, numQuestions, points, maxPoints, answer }) {
   return (
     <header className="progress">

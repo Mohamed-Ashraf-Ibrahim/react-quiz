@@ -1,5 +1,4 @@
-/* eslint-disable no-case-declarations */
-/* eslint-disable no-unused-vars */
+
 import { useEffect, useReducer } from "react";
 import Header from "./Header";
 import Main from "./Main";

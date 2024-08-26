@@ -1,6 +1,6 @@
 // Timer.js
 import { useEffect } from "react";
-// eslint-disable-next-line react/prop-types
+
 function Timer({ secondsRemaining, dispatch, question }) {
   const mins = Math.floor(secondsRemaining / 60);
   const seconds = secondsRemaining % 60;
