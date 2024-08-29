@@ -1,3 +1,5 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable no-unused-vars */
 
 import { useEffect, useReducer } from "react";
 import Header from "./Header";
@@ -100,7 +102,7 @@ export default function App() {
   useEffect(() => {
     async function fetchQuestions() {
       try {
-        const res = await fetch("/data/questions.json");
+        const res = await fetch("http://localhost:9000/questions");
         if (!res.ok)
           throw new Error("Something went wrong with fetching questions!");
         const data = await res.json();
