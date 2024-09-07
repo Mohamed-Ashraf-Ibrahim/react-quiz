@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useQuiz } from "../contexts/QuizContext";
 
 function StartScreen() {

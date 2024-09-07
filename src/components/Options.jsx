@@ -1,5 +1,9 @@
+/* eslint-disable react/prop-types */
 
-function Options({ question, dispatch, answer }) {
+import { useQuiz } from "../contexts/QuizContext";
+
+function Options() {
+  const { question, dispatch, answer } = useQuiz();
   const hasAnswered = answer !== null;
 
   const handleOptionClick = (index) => {
