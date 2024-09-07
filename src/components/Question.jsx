@@ -1,9 +1,11 @@
 /* eslint-disable react/prop-types */
 
+import { useQuiz } from "../contexts/QuizContext";
 import Options from "./Options";
 import Timer from "./Timer";
 
-function Start({ question, dispatch, answer, secondsRemaining }) {
+function Start() {
+  const { question, dispatch, answer, secondsRemaining } = useQuiz();
   return (
     <div>
       <h4>{question.question}</h4>
