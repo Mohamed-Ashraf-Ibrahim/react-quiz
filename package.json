@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"vite\" \"json-server --watch data/questions.json --port 9000\"",
-    "build": "CI=false vite build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
     "server": "json-server --watch data/questions.json --port 9000"
